@@ -9,6 +9,12 @@ jj git init --colocate
 echo node_modules > .gitignore
 ```
 
+## tsconfig.json
+
+```json
+"plugins": [{ "name": "@effect/language-service" }],
+```
+
 ## hello-world
 
 * <https://github.com/Effect-TS/effect/blob/main/packages/cli/README.md>
