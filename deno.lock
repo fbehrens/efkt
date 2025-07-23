@@ -5,9 +5,11 @@
     "jsr:@std/internal@^1.0.6": "1.0.8",
     "npm:@effect/cli@*": "0.66.12_@effect+platform@0.87.12__effect@3.16.12_@effect+printer@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_@effect+printer-ansi@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/cli@~0.66.12": "0.66.12_@effect+platform@0.87.12__effect@3.16.12_@effect+printer@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_@effect+printer-ansi@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
+    "npm:@effect/experimental@0.54": "0.54.0_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/platform-node@*": "0.89.5_@effect+cluster@0.41.17__@effect+platform@0.87.12___effect@3.16.12__@effect+rpc@0.64.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+sql@0.40.13___@effect+experimental@0.51.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+workflow@0.4.13___@effect+platform@0.87.12____effect@3.16.12___@effect+rpc@0.64.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___effect@3.16.12__effect@3.16.12_@effect+platform@0.87.12__effect@3.16.12_@effect+rpc@0.64.13__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_@effect+sql@0.40.13__@effect+experimental@0.51.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/platform-node@~0.89.5": "0.89.5_@effect+cluster@0.41.17__@effect+platform@0.87.12___effect@3.16.12__@effect+rpc@0.64.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+sql@0.40.13___@effect+experimental@0.51.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+workflow@0.4.13___@effect+platform@0.87.12____effect@3.16.12___@effect+rpc@0.64.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___effect@3.16.12__effect@3.16.12_@effect+platform@0.87.12__effect@3.16.12_@effect+rpc@0.64.13__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_@effect+sql@0.40.13__@effect+experimental@0.51.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/platform@~0.87.12": "0.87.12_effect@3.16.12",
+    "npm:@types/node@*": "22.15.15",
     "npm:effect@*": "3.16.12",
     "npm:effect@^3.16.12": "3.16.12"
   },
@@ -47,6 +49,14 @@
     },
     "@effect/experimental@0.51.13_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12": {
       "integrity": "sha512-5dqPCO6HT6zLQw2yZaVZgIY4gytr1YQA3ZxfKyXPymKBTyTog0vrQxAiV7KUhXHQLpxvEdmaSisr/S1WUYUBrA==",
+      "dependencies": [
+        "@effect/platform",
+        "effect",
+        "uuid"
+      ]
+    },
+    "@effect/experimental@0.54.0_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12": {
+      "integrity": "sha512-9XkKzfHpcGSLCVKGqC6lHNG/O1seBHNWtOW6bssJbYw8slvZ7giPNyW+iQHL2GhWsSDPFANvIu9K32iBdE7AGA==",
       "dependencies": [
         "@effect/platform",
         "effect",
@@ -114,7 +124,7 @@
     "@effect/sql@0.40.13_@effect+experimental@0.51.13__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12": {
       "integrity": "sha512-rAE9ofFAHcyN74hIPnAp+Kiu51KovayuLkKnBkAn+WsgCyHgK7Tn4qYJe9Hbqi3E/cRepRCh89zw11IpGbf37g==",
       "dependencies": [
-        "@effect/experimental",
+        "@effect/experimental@0.51.13_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12",
         "@effect/platform",
         "@opentelemetry/semantic-conventions",
         "effect",
@@ -261,6 +271,12 @@
     "@standard-schema/spec@1.0.0": {
       "integrity": "sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA=="
     },
+    "@types/node@22.15.15": {
+      "integrity": "sha512-R5muMcZob3/Jjchn5LcO8jdKwSCbzqmPB6ruBxMcf9kbxtniZHP327s6C37iOfuw8mbKK3cAQa7sEl7afLrQ8A==",
+      "dependencies": [
+        "undici-types"
+      ]
+    },
     "braces@3.0.3": {
       "integrity": "sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==",
       "dependencies": [
@@ -372,6 +388,9 @@
     "toml@3.0.0": {
       "integrity": "sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w=="
     },
+    "undici-types@6.21.0": {
+      "integrity": "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ=="
+    },
     "undici@7.11.0": {
       "integrity": "sha512-heTSIac3iLhsmZhUCjyS3JQEkZELateufzZuBaVM5RHXdSBMb1LPMQf5x+FH7qjsZYDP0ttAc3nnVpUB+wYbOg=="
     },
@@ -391,6 +410,7 @@
     "dependencies": [
       "jsr:@std/assert@1",
       "npm:@effect/cli@~0.66.12",
+      "npm:@effect/experimental@0.54",
       "npm:@effect/platform-node@~0.89.5",
       "npm:@effect/platform@~0.87.12",
       "npm:effect@^3.16.12"
