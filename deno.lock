@@ -5,6 +5,7 @@
     "jsr:@std/internal@^1.0.6": "1.0.8",
     "npm:@effect/cli@*": "0.66.12_@effect+platform@0.87.12__effect@3.16.12_@effect+printer@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_@effect+printer-ansi@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/cli@~0.66.12": "0.66.12_@effect+platform@0.87.12__effect@3.16.12_@effect+printer@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_@effect+printer-ansi@0.44.12__@effect+typeclass@0.35.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
+    "npm:@effect/experimental@0.54": "0.54.0_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/platform-node@*": "0.89.5_@effect+cluster@0.41.17__@effect+platform@0.87.12___effect@3.16.12__@effect+rpc@0.64.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+sql@0.40.13___@effect+experimental@0.51.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+workflow@0.4.13___@effect+platform@0.87.12____effect@3.16.12___@effect+rpc@0.64.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___effect@3.16.12__effect@3.16.12_@effect+platform@0.87.12__effect@3.16.12_@effect+rpc@0.64.13__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_@effect+sql@0.40.13__@effect+experimental@0.51.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/platform-node@~0.89.5": "0.89.5_@effect+cluster@0.41.17__@effect+platform@0.87.12___effect@3.16.12__@effect+rpc@0.64.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+sql@0.40.13___@effect+experimental@0.51.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+workflow@0.4.13___@effect+platform@0.87.12____effect@3.16.12___@effect+rpc@0.64.13____@effect+platform@0.87.12_____effect@3.16.12____effect@3.16.12___effect@3.16.12__effect@3.16.12_@effect+platform@0.87.12__effect@3.16.12_@effect+rpc@0.64.13__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_@effect+sql@0.40.13__@effect+experimental@0.51.13___@effect+platform@0.87.12____effect@3.16.12___effect@3.16.12__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_effect@3.16.12",
     "npm:@effect/platform@~0.87.12": "0.87.12_effect@3.16.12",
@@ -47,6 +48,14 @@
     },
     "@effect/experimental@0.51.13_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12": {
       "integrity": "sha512-5dqPCO6HT6zLQw2yZaVZgIY4gytr1YQA3ZxfKyXPymKBTyTog0vrQxAiV7KUhXHQLpxvEdmaSisr/S1WUYUBrA==",
+      "dependencies": [
+        "@effect/platform",
+        "effect",
+        "uuid"
+      ]
+    },
+    "@effect/experimental@0.54.0_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12": {
+      "integrity": "sha512-9XkKzfHpcGSLCVKGqC6lHNG/O1seBHNWtOW6bssJbYw8slvZ7giPNyW+iQHL2GhWsSDPFANvIu9K32iBdE7AGA==",
       "dependencies": [
         "@effect/platform",
         "effect",
@@ -114,7 +123,7 @@
     "@effect/sql@0.40.13_@effect+experimental@0.51.13__@effect+platform@0.87.12___effect@3.16.12__effect@3.16.12_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12": {
       "integrity": "sha512-rAE9ofFAHcyN74hIPnAp+Kiu51KovayuLkKnBkAn+WsgCyHgK7Tn4qYJe9Hbqi3E/cRepRCh89zw11IpGbf37g==",
       "dependencies": [
-        "@effect/experimental",
+        "@effect/experimental@0.51.13_@effect+platform@0.87.12__effect@3.16.12_effect@3.16.12",
         "@effect/platform",
         "@opentelemetry/semantic-conventions",
         "effect",
@@ -391,6 +400,7 @@
     "dependencies": [
       "jsr:@std/assert@1",
       "npm:@effect/cli@~0.66.12",
+      "npm:@effect/experimental@0.54",
       "npm:@effect/platform-node@~0.89.5",
       "npm:@effect/platform@~0.87.12",
       "npm:effect@^3.16.12"
