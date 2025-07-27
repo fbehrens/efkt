@@ -2,14 +2,49 @@
 // Import necessary modules from the libraries
 import { Args, Command, Options } from "@effect/cli";
 import { NodeContext, NodeRuntime } from "@effect/platform-node";
-import { Console, Effect } from "effect";
+import { Console, Effect, Option } from "effect";
 import { argv } from "node:process";
 
-const bold = Options.boolean("bold").pipe(Options.withAlias("b")); // Option
+const colorToAnsiSequence = {
+  red: "\x1b[31m",
+  green: "\x1b[32m",
+  blue: "\x1b[34m",
+} as const;
+const resetCode = "\x1b[0m";
+type SupportedColor = keyof typeof colorToAnsiSequence;
+const supportedColors = Object.keys(colorToAnsiSequence) as SupportedColor[];
+
+const color = Options.choice("color", supportedColors).pipe(
+  Options.withDescription("Choose a color for the text"),
+  Options.withAlias("c"),
+  Options.optional
+); // Option.choice
+
+const applyColor = (
+  text: string,
+  color: Option.Option<SupportedColor>
+): string =>
+  Option.match(color, {
+    onNone: () => text,
+    onSome: (color) => `${colorToAnsiSequence[color]}${text}${resetCode}`,
+  });
+
+const bold = Options.boolean("bold").pipe(
+  Options.withAlias("b"),
+  Options.withDescription("format bold")
+); // Option
 const text = Args.text({ name: "text" }); // positional Argument
 
-const command = Command.make("efkt", { text, bold }, ({ text, bold }) =>
-  Console.log({ text, bold })
+const command = Command.make(
+  "efkt",
+  { text, bold, color },
+  ({ text, bold, color }) => {
+    let formattedText = applyColor(text, color);
+    if (bold) {
+      formattedText = `\x1b[1m${formattedText}\x1b[0m`;
+    }
+    return Console.log(formattedText);
+  }
 );
 
 const cli = Command.run(command, {
