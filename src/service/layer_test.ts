@@ -63,6 +63,15 @@ const DatabaseLive = Layer.effect(
   })
 );
 const AppConfigLive = Layer.merge(ConfigLive, LoggerLive);
+// deno-lint-ignore no-unused-vars
+const ConfigLoggerLive = Layer.provideMerge(LoggerLive, ConfigLive);
+// deno-lint-ignore no-unused-vars
+const ConfigLoggerLive2 = LoggerLive.pipe(Layer.provideMerge(ConfigLive));
+// deno-lint-ignore no-unused-vars
+const AllLive = DatabaseLive.pipe(
+  Layer.provideMerge(LoggerLive),
+  Layer.provideMerge(ConfigLive)
+);
 
 const MainLive = DatabaseLive.pipe(
   Layer.provide(AppConfigLive),
