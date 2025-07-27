@@ -35,8 +35,8 @@ const bold = Options.boolean("bold").pipe(
 ); // Option
 const text = Args.text({ name: "text" }); // positional Argument
 
-const command = Command.make(
-  "efkt",
+const echo = Command.make(
+  "echo",
   { text, bold, color },
   ({ text, bold, color }) => {
     let formattedText = applyColor(text, color);
@@ -46,6 +46,14 @@ const command = Command.make(
     return Console.log(formattedText);
   }
 );
+
+const count = Args.integer().pipe(Args.withDefault(1));
+const repeat = Command.make("repeat", { count }, ({ count }) =>
+  echo.pipe(
+    Effect.andThen((config) => Effect.repeatN(echo.handler(config), count - 1))
+  )
+);
+const command = echo.pipe(Command.withSubcommands([repeat]));
 
 const cli = Command.run(command, {
   name: "Hello World CLI",
