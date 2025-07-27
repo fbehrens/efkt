@@ -1,18 +1,19 @@
 #!/usr/bin/env -S deno run -A
 // Import necessary modules from the libraries
-import { Command } from "@effect/cli";
+import { Args, Command } from "@effect/cli";
 import { NodeContext, NodeRuntime } from "@effect/platform-node";
 import { Console, Effect } from "effect";
 import { argv } from "node:process";
 
-// Define the top-level command
-const command = Command.make("efkt", {}, () => Console.log("Hello World"));
+const text = Args.text({ name: "text" }); // positional Argument
 
-// Set up the CLI application
+const command = Command.make("efkt", { text }, ({ text }) =>
+  Console.log({ text })
+);
+
 const cli = Command.run(command, {
   name: "Hello World CLI",
   version: "v1.0.0",
 });
 
-// Prepare and run the CLI application
 cli(argv).pipe(Effect.provide(NodeContext.layer), NodeRuntime.runMain);
