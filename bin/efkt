@@ -1,14 +1,15 @@
 #!/usr/bin/env -S deno run -A
 // Import necessary modules from the libraries
-import { Args, Command } from "@effect/cli";
+import { Args, Command, Options } from "@effect/cli";
 import { NodeContext, NodeRuntime } from "@effect/platform-node";
 import { Console, Effect } from "effect";
 import { argv } from "node:process";
 
+const bold = Options.boolean("bold").pipe(Options.withAlias("b")); // Option
 const text = Args.text({ name: "text" }); // positional Argument
 
-const command = Command.make("efkt", { text }, ({ text }) =>
-  Console.log({ text })
+const command = Command.make("efkt", { text, bold }, ({ text, bold }) =>
+  Console.log({ text, bold })
 );
 
 const cli = Command.run(command, {
