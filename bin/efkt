@@ -34,6 +34,7 @@ const bold = Options.boolean("bold").pipe(
   Options.withDescription("format bold")
 ); // Option
 const text = Args.text({ name: "text" }); // positional Argument
+const count = Args.integer().pipe(Args.withDefault(1));
 
 const echo = Command.make(
   "echo",
@@ -47,13 +48,13 @@ const echo = Command.make(
   }
 );
 
-const count = Args.integer().pipe(Args.withDefault(1));
 const repeat = Command.make("repeat", { count }, ({ count }) =>
-  echo.pipe(
-    Effect.andThen((config) => Effect.repeatN(echo.handler(config), count - 1))
-  )
+  Console.log(`Repeating ${count} times`)
 );
-const command = echo.pipe(Command.withSubcommands([repeat]));
+
+const efkt = Command.make("efkt", {}, () => Console.log(`run efkt`));
+
+const command = efkt.pipe(Command.withSubcommands([echo, repeat]));
 
 const cli = Command.run(command, {
   name: "Hello World CLI",
