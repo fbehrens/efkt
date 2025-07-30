@@ -1,7 +1,29 @@
-import { Socket } from "@effect/platform";
-import { Effect, Queue, Console, Config, Redacted } from "effect";
-import { NodeRuntime } from "@effect/platform-node";
+import { Socket, FileSystem } from "@effect/platform";
+import {
+  Effect,
+  Queue,
+  Console,
+  Config,
+  Redacted,
+  Schema,
+  Schedule,
+} from "effect";
+import { NodeContext, NodeRuntime } from "@effect/platform-node";
 import WebSocket from "ws";
+
+const Message = Schema.Struct({
+  MessageType: Schema.String,
+  MetaData: Schema.Struct({
+    MMSI: Schema.Number,
+    MMSI_String: Schema.Number,
+    ShipName: Schema.String,
+    latitude: Schema.Number,
+    longitude: Schema.Number,
+    time_utc: Schema.String,
+  }),
+});
+type Message = Schema.Schema.Type<typeof Message>;
+const MessageData = Schema.parseJson(Message);
 
 const main = Effect.gen(function* (_) {
   const socket = yield* Socket.makeWebSocket(
@@ -22,11 +44,23 @@ const main = Effect.gen(function* (_) {
       ],
     })
   );
-  yield* Effect.gen(function* () {
-    const message = yield* messages.take;
-    yield* Console.log(message.toString());
-  }).pipe(Effect.forever);
-  //   return yield* fiber.await;
+  const counter = new Map<string, number>();
+  const fs = yield* FileSystem.FileSystem;
+  const f = yield* Effect.fork(
+    Effect.gen(function* () {
+      const ms = yield* messages.take;
+      const json_message = ms.toString();
+      const m = yield* Schema.decode(MessageData)(json_message);
+      const mt = m.MessageType;
+      if (!counter.get(mt)) {
+        counter.set(mt, 0);
+        // yield* fs.writeFile(`ais/${mt}.json`, ms);
+      }
+      counter.set(mt, counter.get(mt)! + 1);
+    }).pipe(Effect.repeat(Schedule.recurs(1000)))
+  );
+  yield* f.await;
+  yield* Console.log({ counter });
 });
 
 const runnable = main.pipe(
@@ -34,6 +68,7 @@ const runnable = main.pipe(
     Socket.WebSocketConstructor,
     (url) => new WebSocket(url)
   ),
+  Effect.provide(NodeContext.layer),
   Effect.scoped
 );
 
