@@ -11,7 +11,8 @@
     "npm:@effect/platform@~0.87.12": "0.87.12_effect@3.16.12",
     "npm:@types/node@*": "22.15.15",
     "npm:effect@*": "3.16.12",
-    "npm:effect@^3.16.12": "3.16.12"
+    "npm:effect@^3.16.12": "3.16.12",
+    "npm:ws@^8.18.3": "8.18.3"
   },
   "jsr": {
     "@std/assert@1.0.13": {
@@ -413,7 +414,8 @@
       "npm:@effect/experimental@0.54",
       "npm:@effect/platform-node@~0.89.5",
       "npm:@effect/platform@~0.87.12",
-      "npm:effect@^3.16.12"
+      "npm:effect@^3.16.12",
+      "npm:ws@^8.18.3"
     ]
   }
 }

@@ -1,0 +1,32 @@
+{
+    "Message": {
+        "PositionReport": {
+            "Cog": 280,
+            "CommunicationState": 34823,
+            "Latitude": 37.15140666666667,
+            "Longitude": -6.8812983333333335,
+            "MessageID": 1,
+            "NavigationalStatus": 0,
+            "PositionAccuracy": false,
+            "Raim": false,
+            "RateOfTurn": -128,
+            "RepeatIndicator": 0,
+            "Sog": 0,
+            "Spare": 0,
+            "SpecialManoeuvreIndicator": 0,
+            "Timestamp": 54,
+            "TrueHeading": 511,
+            "UserID": 224553000,
+            "Valid": true
+        }
+    },
+    "MessageType": "PositionReport",
+    "MetaData": {
+        "MMSI": 224553000,
+        "MMSI_String": 224553000,
+        "ShipName": "GREEN HUELVA        ",
+        "latitude": 37.15140666666667,
+        "longitude": -6.8812983333333335,
+        "time_utc": "2025-07-30 08:55:55.022537972 +0000 UTC"
+    }
+}
